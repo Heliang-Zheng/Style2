@@ -367,7 +367,8 @@ def open_url(url: str, cache_dir: str = None, num_attempts: int = 10, verbose: b
             print("Downloading %s ..." % url, end="", flush=True)
         for attempts_left in reversed(range(num_attempts)):
             try:
-                with session.get(url) as res:
+                res = session.get(url)# as res:
+                if True:
                     res.raise_for_status()
                     if len(res.content) == 0:
                         raise IOError("No data received")
